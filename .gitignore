@@ -1,0 +1,24 @@
+# 运行产物
+out/
+cache/
+draft_prep/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+
+# 本项目不对媒体素材做版本管理 —— 素材体积大且属于客户资产
+assets/
+fonts/
+voice/
+voice_sent/
+voice_sent_raw/
+audio/
+
+# 账号 / 路径相关配置（用 *.example.json 模板自建）
+config.json
+media_map.json
+chapters.json
+cards.json
+shots_excluded.json
+media_durations.json

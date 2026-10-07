@@ -1,0 +1,87 @@
+{
+  "_note": "示例文案（通用人参知识，非任何客户文案）。真正使用时：cp chapters.example.json chapters.json 然后替换成你自己的文案。字段：no=章号、code=素材编号、title=竖排题名、source=引文出处、pairs=[{zh,en,quote}]；quote=true 的段落会用引文样式（红色加粗）。",
+  "source_pdf": "example.pdf",
+  "meta_pages": [],
+  "chapters": [
+    {
+      "page": 4,
+      "no": "01",
+      "code": "20260626-39",
+      "title": "识参",
+      "source": "《神农本草经》",
+      "basis": "示例：通用人参知识，用于演示时间轴与排版预检。",
+      "thesis": null,
+      "narration": [],
+      "caption": "",
+      "subtitle_demo": "",
+      "edit_notes": "",
+      "raw": "",
+      "pairs": [
+        {
+          "zh": "人参是五加科多年生草本。",
+          "en": "Ginseng is a perennial herb in the Araliaceae family.",
+          "quote": false
+        },
+        {
+          "zh": "根茎上的芦碗，一年留一个。",
+          "en": "Each growing season leaves one crown scar on the rhizome.",
+          "quote": false
+        },
+        {
+          "zh": "《神农本草经》列之为上品。",
+          "en": "The Shennong Bencao Jing lists it among the superior herbs.",
+          "quote": true
+        },
+        {
+          "zh": "数芦碗，可知参龄。",
+          "en": "Count the scars, and you know its age.",
+          "quote": false
+        }
+      ],
+      "seal_vertical": "",
+      "en_full": "",
+      "en_words": [],
+      "zh_lines": []
+    },
+    {
+      "page": 5,
+      "no": "02",
+      "code": "20260626-25",
+      "title": "参须",
+      "source": "《本草纲目》",
+      "basis": "示例：通用人参知识，用于演示时间轴与排版预检。",
+      "thesis": null,
+      "narration": [],
+      "caption": "",
+      "subtitle_demo": "",
+      "edit_notes": "",
+      "raw": "",
+      "pairs": [
+        {
+          "zh": "参须是吸收水分的细根。",
+          "en": "The rootlets are the fine roots that take up water.",
+          "quote": false
+        },
+        {
+          "zh": "野生参的须，长而韧。",
+          "en": "On wild roots they grow long and supple.",
+          "quote": false
+        },
+        {
+          "zh": "《本草纲目》称之为参须。",
+          "en": "The Bencao Gangmu calls them shenxu.",
+          "quote": true
+        },
+        {
+          "zh": "洗参时最易折断。",
+          "en": "They break most easily while the root is being washed.",
+          "quote": false
+        }
+      ],
+      "seal_vertical": "",
+      "en_full": "",
+      "en_words": [],
+      "zh_lines": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "_note": "示例档案卡文案。card_zh/card_en 是档案卡上的中英档文案，card_name 是竖排题名，citation 是引文出处。真正使用时：cp cards.example.json cards.json。某章缺条目时会自动回退到第 01 章的数据。",
+  "01": {
+    "card_zh": "示例档文案",
+    "card_en": "example card text",
+    "card_name": "识参",
+    "citation": "神农本草经"
+  },
+  "02": {
+    "card_zh": "示例档文案二",
+    "card_en": "second example",
+    "card_name": "参须",
+    "citation": "本草纲目"
+  }
+}
