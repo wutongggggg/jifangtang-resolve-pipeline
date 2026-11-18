@@ -10,7 +10,7 @@
 
 ---
 
-## 一、它解决什么问题
+## 项目背景
 
 一条人参竖屏短视频的规格是固定的：档案卡三轨 + 双 logo + 中英字幕 + 引文竖排 + 配音 + BGM + 段间闪黑。
 
@@ -26,9 +26,9 @@
 
 ---
 
-## 二、技术难点与解法
+## 技术方案
 
-这一节是项目的主体。每一条都是实测踩出来的，不是设计纸上推演的。
+本节总结实现过程中的关键技术问题与解决方案。
 
 ### 1. Sony 原素材的数据轨会让 FCPXML 导入失败
 
@@ -59,7 +59,7 @@ ffmpeg -y -i in.MP4 -map 0:v:0 -map 0:a:0? -c copy -movflags +faststart out.MP4
 解法：**用 ffmpeg 预渲染成素材，再用乘法合成叠上去**。
 
 用「不透明 白→黑 渐变 + `COMPOSITE_MULTIPLY`」实现淡出：乘法里"乘 1 = 不变、乘 0 = 全黑"，
-比带 alpha 的 ProRes 4444 更稳（没有 alpha/色彩管理坑），亮度曲线就是线性淡出。
+比带 alpha 的 ProRes 4444 更稳（没有 alpha/色彩管理问题），亮度曲线就是线性淡出。
 
 > 附带一条硬约束：静态图当载体不可用（`endFrame` 被忽略，永远 150 帧），所以文字轨载体用**透明 MOV**。
 
@@ -85,9 +85,9 @@ ffmpeg -y -i in.MP4 -map 0:v:0 -map 0:a:0? -c copy -movflags +faststart out.MP4
 英文**可以**折行，但要用平衡折行（`fontsel.wrap_balanced`）而不是贪心：
 贪心会留下很短的尾行，字幕上很难看；改成"行数最少"前提下取最均衡的断点。
 
-### 5. Fusion Text+ 的几个静默坑
+### 5. Fusion Text+ 的几个静默问题
 
-| 坑 | 现象 | 解法 |
+| 问题 | 现象 | 解法 |
 |---|---|---|
 | `SetInput` 对**不存在的输入名静默接受** | 样式悄悄不生效 | 用实测白名单 `TEXT_INPUT_IDS` |
 | `Font` 必须填**字体族名**，不是文件路径 | 写路径 → Fusion 把路径当文字渲染 + 渲染失败无法导出 | 用 `fontsel.py` 查真实族名 |
@@ -108,7 +108,7 @@ ffmpeg -y -i in.MP4 -map 0:v:0 -map 0:a:0? -c copy -movflags +faststart out.MP4
 
 ---
 
-## 三、流水线
+## 处理流程
 
 ```mermaid
 flowchart LR
@@ -136,7 +136,7 @@ flowchart LR
 
 ---
 
-## 四、快速开始
+## 快速开始
 
 ```bash
 # 1) 依赖
@@ -158,7 +158,7 @@ python run_chapter.py --chapter 01 --media-dir "<中间片目录>"
 成功输出 `✅ 全流程通过`，工程名见 `out/last_project.txt`。
 
 > **达芬奇要手动双击启动**并停在项目页。用脚本/命令行拉起来的达芬奇会"降级运行"
-> （片段不持久化、导出纯黑）—— 这是实测过的坑，`doctor.py` 就是查这个的。
+> （片段不持久化、导出纯黑）—— 这是实测过的问题，`doctor.py` 就是查这个的。
 
 ### 不开达芬奇也能跑的部分
 
@@ -183,7 +183,7 @@ python build_resolve5.py --timeline out/timeline_ch01.json --dry-run   # 打印�
 
 ---
 
-## 五、跨平台
+## 跨平台支持
 
 本项目同时支持 macOS 与 Windows。平台差异全部在运行时判断，同一份代码两边跑：
 
@@ -201,7 +201,7 @@ python build_resolve5.py --timeline out/timeline_ch01.json --dry-run   # 打印�
 
 ---
 
-## 六、项目结构
+## 项目结构
 
 ```
 editlib.py             共享常量 / 规格 / 坐标换算 / 时间轴校验
@@ -223,7 +223,7 @@ demo/demo.gif          成片效果
 
 ---
 
-## 七、已知限制
+## 限制
 
 - **仓库不含素材**：`assets/`（logo、BGM）、`fonts/`（思源宋体）、配音 wav、文案 JSON 均不入库
   （体积 / 客户资产），需按第 4 节自备。
