@@ -96,7 +96,7 @@ ffmpeg -y -i in.MP4 -map 0:v:0 -map 0:a:0? -c copy -movflags +faststart out.MP4
 | `Size` 的基准是 **696.0**，不是画面高度 1920 | 字号全错 | 用标定草稿 5 档字号拟合（一致性 0.05%） |
 | Fusion 归一化 y 是**翻转**的 | 想下移结果上移 | `1 - px_y/H`；多行时 `CenterY -= (行数-1)/2 × 行高/H` |
 
-### 6. 「一次成片」的底气：不渲染就能验证排版
+### 6. 「一次成片」的验证依据：不渲染即可检查排版
 
 `check_text_layout.py` 用 CoreText（Windows 上走 PIL）取**真实字形宽度**，在**建草稿之前**就算出：
 
